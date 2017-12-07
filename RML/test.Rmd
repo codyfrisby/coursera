@@ -1,0 +1,30 @@
+---
+title: "test"
+author: "Cody Frisby"
+date: "10/12/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+Testing R markdown with plot_ly.  Defaults of plot_ly don't allow for plots to be rendered using knitr PDF.  So, I'm seeing if I can make an HTML document just as well... 
+
+```{r, warning=F, message=F, fig.align='center'}
+library(plotly)
+p2 <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length, 
+              mode = "markers", color = ~Species)
+p2
+```
+
+
+$$E(W) = \frac{n(m+n+1)}{2}$$  $$V(W) = \frac{mn(m+n+1)}{12}$$
+
+Normal approximation:  $$Z = \frac{W_{mn} - E(W)}{\sqrt{V(W)}}$$ 
+
+
+This output looks good.  Perhaps I can render in HTML and then convert it to PDF if I need a PDF document.  Plot ly plots are soooooo much prettier than base R and even ggplot2.  And when viewing them in an html doc they are interactive!  So cool!  
+

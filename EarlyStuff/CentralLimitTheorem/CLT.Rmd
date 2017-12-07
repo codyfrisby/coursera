@@ -1,0 +1,33 @@
+---
+title: "Central Limit Theorem"
+author: "Cody Frisby"
+date: "September 17, 2015"
+output: 
+  html_document: 
+    keep_md: yes
+---
+Here's some R code to simulate the Central Limit Theorem
+
+This first block of code simulates 1000 random samples from a standard exponential
+distribution.  Then we look at the mean.
+```{r}
+exponential <- rexp(1000)
+mean(exponential)
+```
+The next step we are going to take 1000 samples of size 40 from our exponential data
+and then take the mean of each sample.  So in all we will have 1000 means 
+of size n=40.  Then we look at the mean.
+```{r}
+CLT <- NULL
+for (i in 1 : 1000) CLT <- c(CLT, mean(sample(exponential, 40)))
+mean(CLT)
+```
+
+Now let's look at the shape of the piles of these two distributions.
+
+```{r, echo=FALSE}
+hist(exponential, col = "green")
+hist(CLT, col="green")
+```
+
+Observe how the CLT histogram appears normally distributed.
