@@ -35,7 +35,7 @@ ppn.fit(X, y)
 plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
 plt.xlabel('Epochs')
 plt.ylabel('Number of missclassifications')
-
+plt.show()
 ## model converges at the 6th epoch
 
 ## visualize decision boundry

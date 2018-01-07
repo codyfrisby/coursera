@@ -35,7 +35,7 @@ y = mlab.normpdf(bins, mu, sigma)
 plt.plot(bins, y, 'r--')
 plt.xlabel('IQ')
 plt.ylabel('Probability')
-plt.title(r'Histogram of IQ: $\mu=100$, $\sigma=5$')
+plt.title('Histogram of IQ: $\mu=100$, $\sigma=5$')
 
 # Tweak spacing to prevent clipping of ylabel
 plt.subplots_adjust(left=0.15)
