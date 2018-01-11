@@ -8,6 +8,8 @@ Created on Fri Jan  5 12:27:11 2018
 import pandas as pd
 df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', header=None)
 df.tail()
+df.groupby(4).mean() # some pandas summary stuff
+
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -16,10 +18,10 @@ y = df.iloc[0:100, 4].values
 y = np.where(y == 'Iris-setosa', -1, 1)
 X = df.iloc[0:100, [0,2]].values
 
-
 ## plot, select all and run at same time
 plt.scatter(X[:50, 0], X[:50, 1], color='red', marker='o', label='setosa')
-plt.scatter(X[50:100, 0], X[50:100, 1], color='blue', marker='x', label='versicolor')
+plt.scatter(X[50:100, 0], X[50:100, 1], color='blue', marker='x', 
+            label='versicolor')
 
 plt.xlabel('sepal length')
 plt.ylabel('petal length')
@@ -114,3 +116,27 @@ plt.plot(range(1, len(ada.cost_) + 1), ada.cost_, marker='o')
 plt.xlabel('Epochs')
 plt.ylabel('Sum-squared-error')
 plt.show()
+
+
+
+### Apply stochastic GDAdaline class
+
+import Perceptron as p
+ada = p.AdalineSGD(n_iter=15, eta=0.01, random_state=1)
+ada.fit(X_std, y)
+
+## plot shit ##
+plot_decision_regions(X_std, y, classifier=ada)
+plt.title('Adaline - Stochastic Gradient Descent')
+plt.xlabel('sepal length [standardized]')
+plt.ylabel('petal length [standardized]')
+plt.legend(loc='upper left')
+plt.show()
+## plot more shit ##
+plt.plot(range(1, len(ada.cost_) + 1), ada.cost_, marker='o')
+plt.xlabel('Epochs')
+plt.ylabel('Average Cost')
+plt.show()
+
+## if we wanted to use this method for live data we would:
+#ada.partial_fit(X_std[0, :], y[0])
