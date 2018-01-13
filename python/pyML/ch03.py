@@ -15,7 +15,8 @@ y = iris.target
 np.unique(y) # to see how many unique values there are
 
 # split into test and train
-from sklearn.cross_validation import train_test_split
+#from sklearn.cross_validation import train_test_split # deprecated
+from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 
 # standardize
