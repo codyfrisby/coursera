@@ -1,5 +1,3 @@
-
-
 ## Lambda Calculus/Recursion in R
 fact <- function(x) {
   if(x <= 0) {

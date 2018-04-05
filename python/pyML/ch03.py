@@ -4,6 +4,8 @@
 Created on Thu Jan 11 20:21:42 2018
 
 @author: codyfrisby
+
+Notes from Python Machine Learning Chapter 3
 """
 
 from sklearn import datasets
@@ -45,13 +47,11 @@ print('Misclassified samples: %d' % (y_test != y_pred).sum())
 from sklearn.metrics import accuracy_score
 print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
 
-
-
-# Plot Decision Boundry function from chapter 2
+# Plot Decision Boundry function from chapter 2 with an addition
 from matplotlib.colors import ListedColormap
 import matplotlib.pyplot as plt
 
-def plot_decision_regions(X, y, classifier, resolution=0.02):
+def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
     
     # setup marker generator and color map
     markers = ('s', 'x', 'o', '^', 'v')
@@ -73,5 +73,42 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
     for idx, c1 in enumerate(np.unique(y)):
         plt.scatter(x=X[y == c1, 0], y=X[y == c1, 1], alpha=0.8, 
                     c=cmap(idx), marker=markers[idx], label=c1)
+    
+    # highlight test samples
+    if test_idx:
+        X_test, y_test = X[test_idx, :], y[test_idx]
+        plt.scatter(X_test[:, 0], X_test[:, 1], c='', alpha=0.5, linewidths=1,
+                    marker='o', s=55, label='test set')
 # end of decision boundry function
+        
+        
+X_combined_std = np.vstack((X_train_std, X_test_std))
+y_combined_std = np.hstack((y_train, y_test))
+plot_decision_regions(X_combined_std, y_combined_std, classifier=ppn,
+                      test_idx=range(105, 150), resolution=0.02)
+plt.xlabel('petal length [standardized]')
+plt.ylabel('petal width [standardized]')
+plt.legend(loc='upper left')
+plt.show()
+#print("/n/n/nScript ran successfully!")
+
+# Plot of the sigmoid function from -7 to 7
+import matplotlib.pyplot as plt
+import numpy as np
+def sigmoid(z):
+    return 1.0 / (1.0 + np.exp(-z))
+
+z = np.arange(-7, 7, 0.1)
+phi_z = sigmoid(z)
+plt.plot(z, phi_z)
+plt.axvline(0.0, color='k')
+plt.axhspan(0.0, 1.0, facecolor='1.0', alpha=1.0, ls='dotted')
+plt.axhline(y=0.5, ls='dotted', color='k')
+plt.yticks([0.0, 0.5, 1.0])
+plt.ylim(-0.1, 1.1)
+plt.xlabel('z')
+plt.ylabel('$\phi (z)$')
+plt.show()
+## end of sigmoid plot
+
 

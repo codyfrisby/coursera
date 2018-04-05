@@ -4,6 +4,8 @@
 Created on Fri Jan  5 12:27:11 2018
 
 @author: codyfrisby
+
+Notes from Python Machine Learning Chapter 2
 """
 import pandas as pd
 df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', header=None)
