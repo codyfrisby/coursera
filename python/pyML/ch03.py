@@ -41,7 +41,7 @@ print('Misclassified samples: %d' % (y_test != y_pred).sum())
 #((y_test != y_pred).sum() / len(y_pred)) * 100
 
 # acuracy
-#1 - ((y_test != y_pred).sum() / len(y_pred))
+#(1 - ((y_test != y_pred).sum() / len(y_pred))) * 100
 
 # use scikit-learn built in accuracy function:
 from sklearn.metrics import accuracy_score
@@ -77,8 +77,8 @@ def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
     # highlight test samples
     if test_idx:
         X_test, y_test = X[test_idx, :], y[test_idx]
-        plt.scatter(X_test[:, 0], X_test[:, 1], c='', alpha=0.5, linewidths=1,
-                    marker='o', s=55, label='test set')
+        plt.scatter(X_test[:, 0], X_test[:, 1], c='', alpha=0.5,
+                    linewidths=1, marker='o', s=55, label='test set')
 # end of decision boundry function
         
         
@@ -90,7 +90,7 @@ plt.xlabel('petal length [standardized]')
 plt.ylabel('petal width [standardized]')
 plt.legend(loc='upper left')
 plt.show()
-#print("/n/n/nScript ran successfully!")
+#print("\n\tScript ran successfully!")
 
 # Plot of the sigmoid function from -7 to 7
 import matplotlib.pyplot as plt
@@ -110,5 +110,3 @@ plt.xlabel('z')
 plt.ylabel('$\phi (z)$')
 plt.show()
 ## end of sigmoid plot
-
-
