@@ -9,8 +9,6 @@ names(df) <- c("month", "charges", "util", "solar")
 # create table
 sql <- "CREATE TABLE solar (month varchar(255), charges decimal(3,2), util INT, solar decimal(3,2));"
 
-#sqldrop <- "DROP TABLE solar"
-
 library(RMySQL)
 user <- "root"
 password <- "root"
@@ -30,16 +28,15 @@ dbWriteTable(conn = conn,
              name = "solar", 
              value = df,
              append = TRUE,
-             row.names = FALSE)  ## x is any data frame
+             row.names = FALSE)
 
-# close connection
-
+# pull data to check that it worked :)
 sql2 = "SELECT * FROM solar"
 results <- dbSendQuery(conn, sql2)
 df <- dbFetch(results)
 df
 
-
+# close connection
 dbDisconnect(conn)
 
 #sqlDrop <- "DROP TABLE solar"
