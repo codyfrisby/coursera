@@ -1,13 +1,16 @@
 # first let's get the data ready to load
-df <- read.csv("~/Documents/solar/electricity", header = TRUE)
-
-n <- dim(df)[1]
-
-names(df) <- c("month", "charges", "util", "solar")
-#paste(df[i, ], collapse = ",")
+#df <- read.csv("~/Documents/solar/electricity", header = TRUE)
+#names(df) <- c("month", "charges", "util", "solar")
+### update this morning.  I wanted to add a year column...
+# so I pulled the table from the data base into R added the correct
+# years and deleted the table from R.  I think recreated the table
+# adding the year column and loaded the dataframe R object into the
+# newly created table.  Worked :)
+# So now the above lines of code are invalid and should not be used
+# so I have commented them out.
 
 # create table
-sql <- "CREATE TABLE solar (month varchar(255), charges decimal(4,2), util INT, solar decimal(8,2));"
+sql <- "CREATE TABLE solar (month varchar(255), charges decimal(4,2), util INT, solar decimal(8,2), year INT);"
 
 library(RMySQL)
 user <- "root"
@@ -26,7 +29,7 @@ dbSendQuery(conn, sql)
 library(DBI)
 dbWriteTable(conn = conn, 
              name = "solar", 
-             value = df,
+             value = dq,
              append = TRUE,
              row.names = FALSE)
 
