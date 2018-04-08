@@ -12,7 +12,7 @@ def generateOne(strlen):
     Generate a string of length strlen
     
     """
-    alphabet = "abcdefghijklmnopqrstuvwxyz     "
+    alphabet = "abcdefghijklmnopqrstuvwxyz     " # added more blanks
     res = ""
     for i in range(strlen):
         res = res + alphabet[random.randrange(len(alphabet))]
