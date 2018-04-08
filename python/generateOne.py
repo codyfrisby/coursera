@@ -12,10 +12,10 @@ def generateOne(strlen):
     Generate a string of length strlen
     
     """
-    alphabet = "abcdefghijklmnopqrstuvwxyz "
+    alphabet = "abcdefghijklmnopqrstuvwxyz     "
     res = ""
     for i in range(strlen):
-        res = res + alphabet[random.randrange(27)]
+        res = res + alphabet[random.randrange(len(alphabet))]
         
     return res
 
@@ -42,7 +42,7 @@ def main():
     
     """
     goalstring = 'methinks it is like a weasel'
-    newstring = generateOne(28)
+    newstring = generateOne(len(goalstring))
     #best = 0
     newscore = score(goalstring, newstring)
     n = 0
