@@ -7,7 +7,7 @@ names(df) <- c("month", "charges", "util", "solar")
 #paste(df[i, ], collapse = ",")
 
 # create table
-sql <- "CREATE TABLE solar (month varchar(255), charges decimal(3,2), util INT, solar decimal(3,2));"
+sql <- "CREATE TABLE solar (month varchar(255), charges decimal(4,2), util INT, solar decimal(8,2));"
 
 library(RMySQL)
 user <- "root"
@@ -33,8 +33,8 @@ dbWriteTable(conn = conn,
 # pull data to check that it worked :)
 sql2 = "SELECT * FROM solar"
 results <- dbSendQuery(conn, sql2)
-df <- dbFetch(results)
-df
+dq <- dbFetch(results)
+dq
 
 # close connection
 dbDisconnect(conn)
