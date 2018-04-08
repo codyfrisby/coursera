@@ -25,10 +25,10 @@ print(df)
 
 
 ######################## load some new data ########################
-dataFeb = ('february', 18.75, 214, 462.48)
-dataMar = ('march', 4.03, 46, 673.81)
+dataFeb = ('february', 18.75, 214, 462.48, 2018)
+dataMar = ('march', 4.03, 46, 673.81, 2018)
 
-sqlSend = "INSERT INTO solar (month, charges, util, solar) VALUES(%s, %s, %s, %s);"
+sqlSend = "INSERT INTO solar (month, charges, util, solar, year) VALUES(%s, %s, %s, %s, %s);"
 
 #sqlDelete = "DELETE FROM solar WHERE charges = 18.75;"
 
